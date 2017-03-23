@@ -1,15 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <sys/time.h>
 
-#include "find_median_sorted_arrays.h"
+#include "zigzag_conversion.h"
 
 using namespace std;
 
 int main() {
-    find_median_sorted_arrays s;
-    vector<int> v1 = {11, 12};
-    vector<int> v2 = {1,1,5,6,7,10,12};
-    cout << s.findMedianSortedArrays(v1, v2) << endl;
+    struct timeval t_begin, t_end;
+    double td_begin, td_end, td_spend;
+    zizag_conversion s;
+    string result;
+    string str = "0123456789";
+    gettimeofday(&t_begin,NULL);
+    result  = s.convert(str, 1);
+    gettimeofday(&t_end,NULL);
+    td_begin = t_begin.tv_sec + t_begin.tv_usec / 1000000.0;
+    td_end = t_end.tv_sec + t_end.tv_usec / 1000000.0;
+    cout << "time:   " << td_end - td_begin <<  endl
+         << "result: " << result << endl;
     return 0;
 
 }
